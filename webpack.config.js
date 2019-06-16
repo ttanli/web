@@ -26,8 +26,14 @@ module.exports = {
     ],
     devServer: {
         open: true,
+        noInfo: true,
         contentBase: path.join(__dirname, 'public'),
         compress: true,
         port: 8081
+    },
+    resolve: {
+        alias: {
+          '@': path.resolve(__dirname, 'src/')
+        }
     }
 }
