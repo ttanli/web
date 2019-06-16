@@ -1,0 +1,28 @@
+language: node_js
+node_js:
+  - "12"
+sudo: enabled
+branches:
+  only:
+    - master
+install:
+  - yarn install
+script:
+  - CI=false yarn build
+
+notifications:
+  email:
+    - guiyumin@yahoo.com
+  slack: 
+    template:
+      - "Build *<%{build_url}|#%{build_number}> (<%{compare_url}|%{commit}>) of %{repository_slug}@%{branch}*"
+      - "Branch: *%{branch}*"
+      - "Message: *%{commit_message}*"
+      - "Author:  *%{author}*"
+      - "Commit: *%{commit}*"
+      - "Build Status: *%{result}* "
+      - "Build Duration: *%{duration}* "
+    rooms:
+      - jekyllpay:ayUfNRYKnjoK3WsJle9Ec0YI
+    on_success: always
+    on_failure: always

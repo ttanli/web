@@ -21,12 +21,13 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             title:'天天安利日报',
-            template: './public/index.html'
+            template: './public/index.html',
+            hash:true
         })
     ],
     devServer: {
         open: true,
-        noInfo: true,
+        noInfo: false,
         contentBase: path.join(__dirname, 'public'),
         compress: true,
         port: 8081
