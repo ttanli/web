@@ -39,7 +39,7 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            title:'天天安利日报',
+            title:'天天安利 • 日报',
             template: './public/index.html',
             favicon: "./public/favicon.png",
             hash:true

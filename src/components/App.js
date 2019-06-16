@@ -52,7 +52,7 @@ class App extends Component {
               <Menu.Item onClick={ ()=> console.log('go to homepage')}>
                 <Image size='mini' src={logo} />
               </Menu.Item>
-              <Menu.Item header>天天安利 • 日报</Menu.Item>
+              <Menu.Item header onClick={ ()=> console.log('go to homepage')}>天天安利 • 日报</Menu.Item>
               <Menu.Item header as='a'>Pricing</Menu.Item>
               <Menu.Item as='a'>Articles</Menu.Item>
 
