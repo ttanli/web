@@ -15,6 +15,25 @@ module.exports = {
                 use: {
                     loader: 'babel-loader'
                 }
+            },
+            {
+                test: /\.css$/,
+                use: [
+                  // style-loader
+                  { loader: 'style-loader' },
+                  // css-loader
+                  {
+                    loader: 'css-loader'
+                  }
+                ]
+            },
+            {
+                test: /\.(jpg|png|gif|svg|ico|ttf|eot|woff|woff2|otf)$/,
+                use: [
+                    {
+                        loader: "url-loader",
+                    }
+                ]
             }
         ]
     },
@@ -22,6 +41,7 @@ module.exports = {
         new HtmlWebpackPlugin({
             title:'天天安利日报',
             template: './public/index.html',
+            favicon: "./public/favicon.png",
             hash:true
         })
     ],
