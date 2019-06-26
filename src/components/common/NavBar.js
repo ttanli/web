@@ -10,11 +10,15 @@ class NavBar extends Component {
     return ( 
       <AppBar>
         <Toolbar variant="dense">
-          <Grid container alignContent="flex-start" alignItems="center">
-              <Avatar alt="logo" src={logo}  />
-              <Typography variant="subtitle1" noWrap>
-              天天安利 • 日报
-            </Typography>
+          <Grid container alignContent="flex-start" alignItems="center" spacing={1}>
+            <Grid item>
+                    <Avatar alt="logo" src={logo}  />
+                </Grid>
+                <Grid item>
+                    <Typography variant="subtitle1" noWrap>
+                      天天安利 • 日报
+                    </Typography>
+                </Grid>
           </Grid>
         </Toolbar>
       </AppBar>
