@@ -18,7 +18,7 @@ class NavBar extends Component {
             </Grid>
             <Grid item>
               <Typography variant="subtitle1" noWrap>
-                天天安利 • 日报
+                天天安利
               </Typography>
             </Grid>
           </Grid>

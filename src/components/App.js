@@ -3,7 +3,11 @@ import NavBar from "@/components/common/NavBar";
 
 class App extends Component {
   render() {
-    return <NavBar />;
+    return (
+      <React.Fragment>
+        <NavBar />
+      </React.Fragment>
+    );
   }
 }
 

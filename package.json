@@ -1,13 +1,13 @@
 {
-  "name": "daily-web-react",
+  "name": "ttanli-web-app-react",
   "version": "1.0.0",
-  "description": "the web app for ttanli daily api",
+  "description": "ttanli web app",
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --mode development",
     "build": "webpack --mode production"
   },
-  "repository": "https://github.com/guiyumin/daily-web-react",
+  "repository": "https://github.com/ttanli/web",
   "author": "Yumin Gui <guiyumin@yahoo.com>",
   "license": "MIT",
   "private": true,
