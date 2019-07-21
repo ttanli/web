@@ -1,11 +1,15 @@
 import React, { Component } from "react";
 import logo from "@/assets/logo.png";
-import { AppBar, Toolbar, Grid, Avatar, Typography, TextField, Menu, MenuItem, Hidden } from "@material-ui/core";
+import { AppBar, Toolbar, Grid, Avatar, Typography, TextField, Hidden } from "@material-ui/core";
 import Icon from "@material-ui/core/Icon";
 
 class NavBar extends Component {
   handleClickAccountIcon = () => {
     console.log("click");
+  };
+
+  handleSearchOnChange = async (event) => {
+    console.log(event.target.value);
   };
 
   render() {
@@ -25,11 +29,20 @@ class NavBar extends Component {
           <Grid container alignItems="center" justify="flex-end" spacing={1}>
             <Grid item>
               <Hidden smDown>
-                <TextField label="Search" margin="dense" variant="outlined" />
+                <TextField
+                  autoFocus
+                  fullWidth
+                  label="Search..."
+                  margin="dense"
+                  variant="outlined"
+                  onChange={this.handleSearchOnChange}
+                />
               </Hidden>
             </Grid>
             <Grid item onClick={this.handleClickAccountIcon}>
-              <Icon>account_circle</Icon>
+              <Grid container alignItems="center">
+                <Icon>account_circle</Icon>
+              </Grid>
             </Grid>
           </Grid>
         </Toolbar>
