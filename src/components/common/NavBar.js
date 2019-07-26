@@ -1,16 +1,17 @@
 import React, { Component } from "react";
 import logo from "@/assets/logo.png";
-import { AppBar, Toolbar, Grid, Avatar, Typography, TextField, Hidden } from "@material-ui/core";
-import Icon from "@material-ui/core/Icon";
+import { AppBar, Toolbar, Grid, Avatar, Typography, TextField, Hidden, Icon } from "@material-ui/core";
+
+import { debounce } from "lodash";
 
 class NavBar extends Component {
   handleClickAccountIcon = () => {
     console.log("click");
   };
 
-  handleSearchOnChange = async (event) => {
-    console.log(event.target.value);
-  };
+  handleSearchOnChange = debounce(async (value) => {
+    console.log(value);
+  }, 500);
 
   render() {
     return (
@@ -35,7 +36,7 @@ class NavBar extends Component {
                   label="Search..."
                   margin="dense"
                   variant="outlined"
-                  onChange={this.handleSearchOnChange}
+                  onChange={({ target: { value } }) => this.handleSearchOnChange(value)}
                 />
               </Hidden>
             </Grid>
