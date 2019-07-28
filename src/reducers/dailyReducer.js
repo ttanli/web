@@ -2,7 +2,7 @@ const initState = {
   dailys: [],
 };
 
-const shirtsReducer = (state = initState, action) => {
+const dailyReducer = (state = initState, action) => {
   if (action.type === "UPDATE_DAILYS") {
     return {
       ...state,
@@ -12,4 +12,4 @@ const shirtsReducer = (state = initState, action) => {
   return state;
 };
 
-export default shirtsReducer;
+export default dailyReducer;

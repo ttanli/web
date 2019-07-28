@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import logo from "@/assets/logo.png";
 import { AppBar, Toolbar, Grid, Avatar, Typography, TextField, Hidden, Icon } from "@material-ui/core";
 
+import { connect } from "react-redux";
+
 class NavBar extends Component {
   handleClickAccountIcon = () => {
     console.log("click");
@@ -13,6 +15,7 @@ class NavBar extends Component {
 
   handleSearchOnEnterKeyUp = async (key) => {
     if (key === "Enter") {
+      await this.searchShirts();
     }
   };
 
@@ -62,7 +65,7 @@ class NavBar extends Component {
             </Grid>
             <Grid item onClick={this.handleClickAccountIcon}>
               <Grid container alignItems="center">
-                <Icon>account_circle</Icon>
+                <Icon style={{ cursor: "pointer" }}>account_circle</Icon>
               </Grid>
             </Grid>
           </Grid>
@@ -72,4 +75,21 @@ class NavBar extends Component {
   }
 }
 
-export default NavBar;
+const mapStateToProps = (state) => {
+  return {
+    dailys: state.dailyReducer.dailys,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    updateDailys: (dailys) => {
+      dispatch({ type: "UPDATE_DAILYS", dailys: dailys });
+    },
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(NavBar);
