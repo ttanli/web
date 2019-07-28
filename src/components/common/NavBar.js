@@ -2,16 +2,28 @@ import React, { Component } from "react";
 import logo from "@/assets/logo.png";
 import { AppBar, Toolbar, Grid, Avatar, Typography, TextField, Hidden, Icon } from "@material-ui/core";
 
-import { debounce } from "lodash";
-
 class NavBar extends Component {
   handleClickAccountIcon = () => {
     console.log("click");
   };
 
-  handleSearchOnChange = debounce(async (value) => {
-    console.log(value);
-  }, 500);
+  setSearchKeyword = (value) => {
+    this.keyword = value.toString().trim();
+  };
+
+  handleSearchOnEnterKeyUp = async (key) => {
+    if (key === "Enter") {
+    }
+  };
+
+  handleSearchIconOnClick = async () => {
+    await this.searchShirts();
+  };
+
+  searchShirts = async () => {
+    if (!!this.keyword) {
+    }
+  };
 
   render() {
     return (
@@ -36,7 +48,15 @@ class NavBar extends Component {
                   label="Search..."
                   margin="dense"
                   variant="outlined"
-                  onChange={({ target: { value } }) => this.handleSearchOnChange(value)}
+                  onChange={({ target: { value } }) => this.setSearchKeyword(value)}
+                  onKeyUp={({ key }) => this.handleSearchOnEnterKeyUp(key)}
+                  InputProps={{
+                    endAdornment: (
+                      <Icon style={{ cursor: "pointer" }} onClick={this.handleSearchIconOnClick}>
+                        search
+                      </Icon>
+                    ),
+                  }}
                 />
               </Hidden>
             </Grid>
