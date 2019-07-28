@@ -5,12 +5,15 @@ import { AppBar, Toolbar, Grid, Avatar, Typography, TextField, Hidden, Icon } fr
 import { connect } from "react-redux";
 
 class NavBar extends Component {
+  state = {
+    keyword: "",
+  };
   handleClickAccountIcon = () => {
     console.log("click");
   };
 
   setSearchKeyword = (value) => {
-    this.keyword = value.toString().trim();
+    this.setState({ keyword: value.toString().trim() });
   };
 
   handleSearchOnEnterKeyUp = async (key) => {
@@ -24,7 +27,7 @@ class NavBar extends Component {
   };
 
   searchShirts = async () => {
-    if (!!this.keyword) {
+    if (!!this.state.keyword) {
     }
   };
 
