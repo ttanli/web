@@ -1,8 +1,11 @@
 import React, { Component } from "react";
 import logo from "@/assets/logo.png";
+import { withRouter } from "react-router-dom";
 import { AppBar, Toolbar, Grid, Avatar, Typography, TextField, Hidden, Icon } from "@material-ui/core";
 
 import { connect } from "react-redux";
+
+import { search } from "@/apis/navbar";
 
 class NavBar extends Component {
   constructor(props) {
@@ -21,16 +24,27 @@ class NavBar extends Component {
 
   handleSearchOnEnterKeyUp = async (key) => {
     if (key === "Enter") {
-      await this.searchShirts();
+      await this.searchDailys();
     }
   };
 
   handleSearchIconOnClick = async () => {
-    await this.searchShirts();
+    await this.searchDailys();
   };
 
-  searchShirts = async () => {
+  searchDailys = async () => {
     if (!!this.state.keyword) {
+      let dailys;
+      let resp = await search(this.state.keyword);
+      if (resp.status === 200) {
+        dailys = resp.data;
+      } else {
+        dailys = [];
+      }
+      // console.log(dailys);
+      this.props.updateDailys(dailys);
+      this.props.history.push("/search");
+    } else {
     }
   };
 
@@ -45,7 +59,7 @@ class NavBar extends Component {
             <Grid item onClick={this.handleLogoOnClick} style={{ cursor: "pointer" }}>
               <Avatar alt="logo" src={logo} />
             </Grid>
-            <Grid item>
+            <Grid item onClick={this.handleLogoOnClick} style={{ cursor: "pointer" }}>
               <Typography variant="subtitle1" noWrap>
                 天天安利
               </Typography>
@@ -101,4 +115,4 @@ const mapDispatchToProps = (dispatch) => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(NavBar);
+)(withRouter(NavBar));
