@@ -5,9 +5,12 @@ import { AppBar, Toolbar, Grid, Avatar, Typography, TextField, Hidden, Icon } fr
 import { connect } from "react-redux";
 
 class NavBar extends Component {
-  state = {
-    keyword: "",
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      keyword: "",
+    };
+  }
   handleClickAccountIcon = () => {
     console.log("click");
   };
@@ -31,12 +34,15 @@ class NavBar extends Component {
     }
   };
 
+  handleLogoOnClick = () => {
+    this.props.history.push("/");
+  };
   render() {
     return (
       <AppBar color="inherit">
         <Toolbar variant="regular">
           <Grid container alignItems="center" justify="flex-start" spacing={1}>
-            <Grid item>
+            <Grid item onClick={this.handleLogoOnClick} style={{ cursor: "pointer" }}>
               <Avatar alt="logo" src={logo} />
             </Grid>
             <Grid item>
