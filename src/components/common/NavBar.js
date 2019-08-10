@@ -2,41 +2,19 @@ import React, { Component } from "react";
 import logo from "@/assets/logo.png";
 import { withRouter } from "react-router-dom";
 import { AppBar, Toolbar, Grid, Avatar, Typography, TextField, Hidden, Icon } from "@material-ui/core";
-import { withStyles } from "@material-ui/styles";
+
 import { connect } from "react-redux";
 
 import { search } from "@/apis/navbar";
-
-import SpeedDial from "@material-ui/lab/SpeedDial";
-import SpeedDialIcon from "@material-ui/lab/SpeedDialIcon";
-import SpeedDialAction from "@material-ui/lab/SpeedDialAction";
-
-const styles = (theme) => ({
-  speedDial: {
-    position: "absolute",
-  },
-});
-
-const actions = [
-  { icon: <Icon>file_copy</Icon>, name: "Copy" },
-  { icon: <Icon>save</Icon>, name: "Save" },
-  { icon: <Icon>print</Icon>, name: "Print" },
-  { icon: <Icon>share</Icon>, name: "Share" },
-  { icon: <Icon>delete</Icon>, name: "Delete" },
-];
+import UserCenter from "@/components/common/UserCenter";
 
 class NavBar extends Component {
   constructor(props) {
     super(props);
     this.state = {
       keyword: "",
-      open: false,
-      hidden: false,
     };
   }
-  handleClickAccountIcon = () => {
-    console.log("click");
-  };
 
   setSearchKeyword = (value) => {
     this.setState({ keyword: value.toString().trim() });
@@ -71,36 +49,6 @@ class NavBar extends Component {
 
   handleLogoOnClick = () => {
     this.props.history.push("/");
-  };
-
-  // [open, setOpen] = React.useState(false);
-  // [hidden, setHidden] = React.useState(false);
-
-  setOpen = () => {
-    this.setState({});
-  };
-
-  setHidden = () => {
-    this.setState({});
-  };
-
-  handleVisibility = () => {
-    setOpen(false);
-    setHidden((prevHidden) => !prevHidden);
-  };
-
-  handleClick = () => {
-    setOpen((prevOpen) => !prevOpen);
-  };
-
-  handleOpen = () => {
-    if (!hidden) {
-      setOpen(true);
-    }
-  };
-
-  handleClose = () => {
-    setOpen(false);
   };
 
   render() {
@@ -139,31 +87,9 @@ class NavBar extends Component {
                 />
               </Hidden>
             </Grid>
-            <Grid item onClick={this.handleClickAccountIcon}>
+            <Grid item>
               <Grid container alignItems="center">
-                <Icon style={{ cursor: "pointer" }}>account_circle</Icon>
-                <SpeedDial
-                  ariaLabel="SpeedDial tooltip example"
-                  className={classes.speedDial}
-                  hidden={this.state.hidden}
-                  icon={<SpeedDialIcon />}
-                  onBlur={this.handleClose}
-                  onClick={this.handleClick}
-                  onClose={this.handleClose}
-                  onFocus={this.handleOpen}
-                  onMouseEnter={this.handleOpen}
-                  onMouseLeave={this.handleClose}
-                  open={this.state.open}>
-                  {actions.map((action) => (
-                    <SpeedDialAction
-                      key={action.name}
-                      icon={action.icon}
-                      tooltipTitle={action.name}
-                      tooltipOpen
-                      onClick={this.handleClick}
-                    />
-                  ))}
-                </SpeedDial>
+                <UserCenter />
               </Grid>
             </Grid>
           </Grid>
@@ -190,4 +116,4 @@ const mapDispatchToProps = (dispatch) => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(withRouter(withStyles(styles)(NavBar)));
+)(withRouter(NavBar));
